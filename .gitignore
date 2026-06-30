@@ -1,0 +1,31 @@
+# Python
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Model files
+*.pt
+*.pth
+*.onnx
+*.bin
+*.ckpt
+
+# Audio
+*.wav
+*.mp3
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# VS Code
+.vscode/
+
+# Build
+dist/
+build/
