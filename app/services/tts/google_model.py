@@ -1,7 +1,7 @@
 from app.services.tts.base import BaseTTSModel
 
 
-class AzureTTSModel(BaseTTSModel):
+class GoogleTTSModel(BaseTTSModel):
 
     def __init__(self, voice):
 
@@ -10,5 +10,5 @@ class AzureTTSModel(BaseTTSModel):
     def speak(self, text, output_path):
 
         raise NotImplementedError(
-            "Azure Speech SDK integration not implemented yet."
+            "Google Cloud TTS integration not implemented yet."
         )
