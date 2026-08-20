@@ -10,59 +10,77 @@ from app.services.tts.xtts_model import XTTSModel
 class ModelManager:
 
     def __init__(self):
+
         self.loaded_models = {}
+
+    def _build_model(self, provider):
+
+        engine = provider["engine"]
+
+        model_name = provider["model"]
+
+        if engine == "coqui":
+            return CoquiTTSModel(model_name)
+
+        if engine == "huggingface":
+            return HuggingFaceTTSModel(model_name)
+
+        if engine == "azure":
+            return AzureTTSModel(model_name)
+
+        if engine == "google":
+            return GoogleTTSModel(model_name)
+
+        if engine == "xtts":
+            return XTTSModel(model_name)
+
+        raise Exception(
+            f"Unsupported engine: {engine}"
+        )
 
     def get_tts(self, language):
 
         if language not in LANGUAGE_MODELS:
-            raise Exception(f"Unsupported language: {language}")
+            raise Exception(
+                f"Unsupported language: {language}"
+            )
 
         if language in self.loaded_models:
             return self.loaded_models[language]
 
         config = LANGUAGE_MODELS[language]
 
-        provider = config["provider"]
+        providers = config["providers"]
 
-        if provider == "coqui":
+        last_error = None
 
-            model = CoquiTTSModel(
-                config["tts_model"]
-            )
+        for provider in providers:
 
-        elif provider == "huggingface":
+            try:
 
-            model = HuggingFaceTTSModel(
-                config["tts_model"]
-            )
+                model = self._build_model(provider)
 
-        elif provider == "azure":
+                self.loaded_models[language] = model
 
-            model = AzureTTSModel(
-                voice=config["tts_model"]
-            )
+                print(
+                    f"{language} -> {provider['engine']} loaded."
+                )
 
-        elif provider == "google":
+                return model
 
-            model = GoogleTTSModel(
-                voice=config["tts_model"]
-            )
+            except Exception as e:
 
-        elif provider == "xtts":
+                print(
+                    f"{provider['engine']} failed:"
+                )
 
-            model = XTTSModel(
-                config["tts_model"]
-            )
+                print(e)
 
-        else:
+                last_error = e
 
-            raise Exception(
-                f"Unsupported provider: {provider}"
-            )
-
-        self.loaded_models[language] = model
-
-        return model
+        raise Exception(
+            f"No provider available for {language}: {last_error}"
+        )
 
 
 model_manager = ModelManager()

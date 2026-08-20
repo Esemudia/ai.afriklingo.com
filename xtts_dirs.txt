@@ -1,0 +1,2 @@
+c:/Users/Owner/Documents/smartskep/afriklingo-ai\venv\Lib\site-packages\TTS\demos\xtts_ft_demo
+c:/Users/Owner/Documents/smartskep/afriklingo-ai\venv\Lib\site-packages\TTS\tts\layers\xtts

@@ -1,9 +1,45 @@
+# ==========================
+# FastAPI
+# ==========================
 fastapi
 uvicorn
+python-multipart
+
+# ==========================
+# AI
+# ==========================
 torch
 torchaudio
 transformers
+faster-whisper
+TTS
+
+# ==========================
+# Audio
+# ==========================
 soundfile
 librosa
-numpy
 scipy
+numpy
+av
+
+# ==========================
+# Whisper Runtime
+# ==========================
+ctranslate2
+onnxruntime
+
+# ==========================
+# HuggingFace
+# ==========================
+huggingface-hub
+tokenizers
+sentencepiece
+
+# ==========================
+# Utilities
+# ==========================
+pydantic
+python-dotenv
+requests
+tqdm

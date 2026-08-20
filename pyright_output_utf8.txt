@@ -1,0 +1,8 @@
+﻿c:\Users\Owner\Documents\smartskep\afriklingo-ai\app\services\stt_service.py
+  c:\Users\Owner\Documents\smartskep\afriklingo-ai\app\services\stt_service.py:28:37 - error: "transcribe" is not a known attribute of "None" (reportOptionalMemberAccess)
+c:\Users\Owner\Documents\smartskep\afriklingo-ai\app\services\tts\azure_model.py
+  c:\Users\Owner\Documents\smartskep\afriklingo-ai\app\services\tts\azure_model.py:39:19 - error: "reason" is not a known attribute of "None" (reportOptionalMemberAccess)
+c:\Users\Owner\Documents\smartskep\afriklingo-ai\app\services\tts\coqui_model.py
+  c:\Users\Owner\Documents\smartskep\afriklingo-ai\app\services\tts\coqui_model.py:12:9 - error: Method "speak" overrides class "BaseTTSModel" in an incompatible manner
+  ┬á┬áParameter 3 name mismatch: base parameter is named "output_path", override parameter is named "output" (reportIncompatibleMethodOverride)
+3 errors, 0 warnings, 0 informations

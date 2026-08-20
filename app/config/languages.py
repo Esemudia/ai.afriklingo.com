@@ -5,9 +5,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "en": {
         "name": "English",
-        "provider": "coqui",
-        "tts_model": "tts_models/en/ljspeech/tacotron2-DDC",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "coqui",
+                "model": "tts_models/en/ljspeech/tacotron2-DDC"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -16,31 +20,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "sw": {
         "name": "Swahili",
-        "provider": "huggingface",
-        "tts_model": "facebook/mms-tts-swh",
-        "stt_model": "openai/whisper-large-v3",
-        "translation_model": "facebook/nllb-200-distilled-600M"
-    },
-
-    # ======================================
-    # YORUBA
-    # ======================================
-    "yo": {
-        "name": "Yoruba",
-        "provider": "azure",
-        "tts_model": "yo-NG-Neural",
-        "stt_model": "openai/whisper-large-v3",
-        "translation_model": "facebook/nllb-200-distilled-600M"
-    },
-
-    # ======================================
-    # HAUSA
-    # ======================================
-    "ha": {
-        "name": "Hausa",
-        "provider": "azure",
-        "tts_model": "ha-NG-Neural",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "huggingface",
+                "model": "facebook/mms-tts-swh"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -49,9 +35,51 @@ LANGUAGE_MODELS = {
     # ======================================
     "am": {
         "name": "Amharic",
-        "provider": "azure",
-        "tts_model": "am-ET-Neural",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "huggingface",
+                "model": "facebook/mms-tts-amh"
+            }
+        ],
+        "stt_model": "large-v3",
+        "translation_model": "facebook/nllb-200-distilled-600M"
+    },
+
+    # ======================================
+    # YORUBA
+    # ======================================
+    "yo": {
+        "name": "Yoruba",
+        "providers": [
+            {
+                "engine": "azure",
+                "model": "yo-NG-Neural"
+            },
+            {
+                "engine": "xtts",
+                "model": "afriklingo/yoruba-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
+        "translation_model": "facebook/nllb-200-distilled-600M"
+    },
+
+    # ======================================
+    # HAUSA
+    # ======================================
+    "ha": {
+        "name": "Hausa",
+        "providers": [
+            {
+                "engine": "azure",
+                "model": "ha-NG-Neural"
+            },
+            {
+                "engine": "xtts",
+                "model": "afriklingo/hausa-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -60,9 +88,17 @@ LANGUAGE_MODELS = {
     # ======================================
     "zu": {
         "name": "Zulu",
-        "provider": "azure",
-        "tts_model": "zu-ZA-Neural",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "azure",
+                "model": "zu-ZA-Neural"
+            },
+            {
+                "engine": "xtts",
+                "model": "afriklingo/zulu-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -71,20 +107,17 @@ LANGUAGE_MODELS = {
     # ======================================
     "xh": {
         "name": "Xhosa",
-        "provider": "azure",
-        "tts_model": "xh-ZA-Neural",
-        "stt_model": "openai/whisper-large-v3",
-        "translation_model": "facebook/nllb-200-distilled-600M"
-    },
-
-    # ======================================
-    # SOMALI
-    # ======================================
-    "so": {
-        "name": "Somali",
-        "provider": "google",
-        "tts_model": "so-SO-Standard-A",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "azure",
+                "model": "xh-ZA-Neural"
+            },
+            {
+                "engine": "xtts",
+                "model": "afriklingo/xhosa-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -93,9 +126,28 @@ LANGUAGE_MODELS = {
     # ======================================
     "ig": {
         "name": "Igbo",
-        "provider": "xtts",
-        "tts_model": "afriklingo/igbo-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/igbo-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
+        "translation_model": "facebook/nllb-200-distilled-600M"
+    },
+
+    # ======================================
+    # SOMALI
+    # ======================================
+    "so": {
+        "name": "Somali",
+        "providers": [
+            {
+                "engine": "google",
+                "model": "so-SO-Standard-A"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -104,9 +156,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "rw": {
         "name": "Kinyarwanda",
-        "provider": "xtts",
-        "tts_model": "afriklingo/kinyarwanda-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/kinyarwanda-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -115,9 +171,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "lg": {
         "name": "Luganda",
-        "provider": "xtts",
-        "tts_model": "afriklingo/luganda-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/luganda-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -126,9 +186,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "sn": {
         "name": "Shona",
-        "provider": "xtts",
-        "tts_model": "afriklingo/shona-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/shona-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -137,9 +201,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "tw": {
         "name": "Twi",
-        "provider": "xtts",
-        "tts_model": "afriklingo/twi-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/twi-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -148,9 +216,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "ee": {
         "name": "Ewe",
-        "provider": "xtts",
-        "tts_model": "afriklingo/ewe-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/ewe-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -159,9 +231,13 @@ LANGUAGE_MODELS = {
     # ======================================
     "wo": {
         "name": "Wolof",
-        "provider": "xtts",
-        "tts_model": "afriklingo/wolof-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/wolof-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     },
 
@@ -170,9 +246,14 @@ LANGUAGE_MODELS = {
     # ======================================
     "ln": {
         "name": "Lingala",
-        "provider": "xtts",
-        "tts_model": "afriklingo/lingala-xtts-v1",
-        "stt_model": "openai/whisper-large-v3",
+        "providers": [
+            {
+                "engine": "xtts",
+                "model": "afriklingo/lingala-xtts-v1"
+            }
+        ],
+        "stt_model": "large-v3",
         "translation_model": "facebook/nllb-200-distilled-600M"
     }
+
 }

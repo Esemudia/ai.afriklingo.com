@@ -17,5 +17,9 @@ class TextRequest(BaseModel):
 
 
 class PronunciationRequest(BaseModel):
+
+    language: str
+
     expected: str
+
     audioPath: str
