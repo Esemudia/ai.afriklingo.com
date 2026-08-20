@@ -1,4 +1,7 @@
 import os
+import soundfile as sf
+import librosa
+import numpy as np
 
 from app.services.model_manager import model_manager
 
@@ -36,6 +39,20 @@ class TTSService:
             text,
             output
         )
+
+        try:
+            # Change speed and volume
+            y, sr = librosa.load(output, sr=None, mono=True)
+            if y is not None and len(y) > 0:
+                y_slow = librosa.effects.time_stretch(y, rate=0.85)
+                max_amp = np.max(np.abs(y_slow))
+                if max_amp > 0:
+                    y_loud = y_slow / max_amp * 0.95
+                else:
+                    y_loud = y_slow
+                sf.write(output, y_loud, int(sr))
+        except Exception as e:
+            print(f"Error processing audio: {e}")
 
         return {
 
