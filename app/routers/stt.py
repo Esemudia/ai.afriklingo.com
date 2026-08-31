@@ -1,4 +1,5 @@
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File, Form
+from typing import Optional
 from app.services.stt_service import STTService
 
 import os
@@ -18,7 +19,9 @@ service = STTService()
 
 async def transcribe(
 
-    audio: UploadFile = File(...)
+    audio: UploadFile = File(...),
+    language: Optional[str] = Form(None),
+    prompt: Optional[str] = Form(None)
 
 ):
 
@@ -28,7 +31,7 @@ async def transcribe(
 
         f.write(await audio.read())
 
-    text = service.transcribe(path)
+    text = service.transcribe(path, language=language)
 
     os.remove(path)
 

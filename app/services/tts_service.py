@@ -41,15 +41,10 @@ class TTSService:
         )
 
         try:
-            # Change speed and volume
             y, sr = librosa.load(output, sr=None, mono=True)
             if y is not None and len(y) > 0:
-                y_slow = librosa.effects.time_stretch(y, rate=0.85)
-                max_amp = np.max(np.abs(y_slow))
-                if max_amp > 0:
-                    y_loud = y_slow / max_amp * 0.95
-                else:
-                    y_loud = y_slow
+                y_boost = y * 2.5  
+                y_loud = np.tanh(y_boost) * 0.98  
                 sf.write(output, y_loud, int(sr))
         except Exception as e:
             print(f"Error processing audio: {e}")

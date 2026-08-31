@@ -14,18 +14,19 @@ class STTService:
             print("Loading Whisper model...")
 
             self.model = WhisperModel(
-                "small",
+                "large-v3",
                 device="cpu",
-                compute_type="int8"
+                compute_type="int8",
+                local_files_only=True
             )
 
             print("Whisper model loaded successfully.")
 
-    def transcribe(self, audio_path):
+    def transcribe(self, audio_path, language=None):
 
         self.load_model()
         assert self.model is not None, "Model failed to load"
-        segments, info = self.model.transcribe(audio_path)
+        segments, info = self.model.transcribe(audio_path, language=language)
 
         transcript = ""
 
